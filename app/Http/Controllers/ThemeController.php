@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ThemeController extends Controller
+{
+    //
+    public function index(){
+        return view("theme.index");
+    }
+    public function category(){
+        return view("theme.category");
+    }
+    public function contact(){
+        return view("theme.contacts");
+    }
+    public function singleblog(){
+        return view("theme.single_blog");
+    }
+    public function register(){
+        return view("theme.register");
+    }
+    public function login(){
+        return view("theme.login");
+    }
+}
