@@ -5,7 +5,7 @@
 
  @include("theme.parials.header_nav")
 
-  <main class="site-main">
+  <main class="site-main">  
 
     @include("theme.parials.hero")
   

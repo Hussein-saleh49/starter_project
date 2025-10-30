@@ -1,16 +1,12 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -18,13 +14,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::controller(ThemeController::class)->group(function(){
-    Route::get('/index',"index")->name("theme.index");
-    Route::get('/category',"category")->name("theme.category");
-    Route::get('/contact',"contact")->name("theme.contact");
-    Route::get('/single-blog',"singleblog")->name("theme.single_blog");
-    Route::get('/sign-up',"register")->name("theme.register");
-    Route::get('/login',"login")->name("theme.login");
+Route::controller(ThemeController::class)->group(function () {
+    Route::get('/index', "index")->name("theme.index");
+    Route::get('/category/{name}', "category")->name("theme.category");
+    Route::get('/contact', "contact")->name("theme.contact");
+
 });
+Route::post("/subscribe", [SubscriberController::class, "subscribe"])->name("subscribe");
+Route::post("/contact", [ContactController::class, "contact"])->name("contact");
+
+Route::resource("blogs", BlogController::class)->except("index");
+Route::post("/comment", [CommentController::class, "store"])->name("comments.store");

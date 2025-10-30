@@ -1,104 +1,83 @@
- <div class="col-lg-4 sidebar-widgets">
-                <div class="widget-wrap">
-                    <div class="single-sidebar-widget newsletter-widget">
-                        <h4 class="single-sidebar-widget__title">Newsletter</h4>
-                        <div class="form-group mt-30">
-                            <div class="col-autos">
-                                <input type="text" class="form-control" id="inlineFormInputGroup"
-                                    placeholder="Enter email" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Enter email'">
+@php
+    use App\Models\Category;
+    use App\Models\Blog;
+
+    $categories = Category::all();
+    $recentblogs = Blog::latest()->take(3)->get();
+@endphp
+
+<div class="col-lg-4 sidebar-widgets">
+    <div class="widget-wrap">
+
+      
+        @if (session('success') && session('form_id') == 'sidebar')
+            <div class="alert alert-success"> {{ session('success') }}</div>
+        @endif
+
+        <div class="single-sidebar-widget newsletter-widget mb-4">
+            <form action="{{ route('subscribe') }}" method="POST">
+                @csrf
+                <h4 class="single-sidebar-widget__title mb-3">Subscribe to Newsletter</h4>
+                <div class="form-group">
+                    <input type="hidden" name="form" value="sidebar">
+                    <input type="hidden" name="form_id" value="sidebar">
+
+                    <input type="email" class="form-control mb-2" value="{{ old('email') }}" name="email"
+                        placeholder="Enter your email">
+                    @error('email', 'sidebar')
+                        <span class="text-danger small">{{ $message }}</span>
+                    @enderror
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mt-2">Subscribe</button>
+            </form>
+        </div>
+
+     
+        @if ($categories->count() > 0)
+            <div class="single-sidebar-widget post-category-widget mb-4">
+                <h4 class="single-sidebar-widget__title mb-3">Categories</h4>
+                <ul class="cat-list list-unstyled">
+                    @foreach ($categories as $category)
+                        <li class="d-flex justify-content-between border-bottom py-2">
+                            <a href="{{ route('theme.category', $category->name) }}" class="text-decoration-none text-dark">
+                                {{ $category->name }}
+                            </a>
+                            <p>{{ $category->blogs->count() }}</p>
+
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        
+        @if ($recentblogs->count() > 0)
+            <div class="single-sidebar-widget popular-post-widget">
+                <h4 class="single-sidebar-widget__title mb-3">Recent Posts</h4>
+
+                <div class="popular-post-list">
+                    @foreach ($recentblogs as $blog)
+                        <div class="single-post-list d-flex mb-3 border-bottom pb-3">
+                            <div class="thumb me-3">
+                                <a href="{{ route('blogs.show', $blog) }}">
+                                    <img src="{{ asset("storage/blogs/$blog->image") }}" alt="{{ $blog->name }}"
+                                        class="rounded" width="80" height="80"
+                                        style="object-fit: cover;">
+                                </a>
+                            </div>
+                            <div class="details flex-grow-1">
+                                <a href="{{ route('blogs.show', $blog) }}" class="text-decoration-none">
+                                    <h6 class="fw-semibold mb-1 text-dark">{{ $blog->user->name }}</h6>
+                                </a>
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar-event"></i>
+                                    {{ $blog->created_at->format('d M ') }}
+                                </small>
                             </div>
                         </div>
-                        <button class="bbtns d-block mt-20 w-100">Subcribe</button>
-                    </div>
-
-                    <div class="single-sidebar-widget post-category-widget">
-                        <h4 class="single-sidebar-widget__title">Catgory</h4>
-                        <ul class="cat-list mt-20">
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Technology</p>
-                                    <p>(03)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Software</p>
-                                    <p>(09)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Lifestyle</p>
-                                    <p>(12)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Shopping</p>
-                                    <p>(02)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Food</p>
-                                    <p>(10)</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="single-sidebar-widget popular-post-widget">
-                        <h4 class="single-sidebar-widget__title">Recent Post</h4>
-                        <div class="popular-post-list">
-                            <div class="single-post-list">
-                                <div class="thumb">
-                                    <img class="card-img rounded-0"
-                                        src="{{ asset('assets') }}/img/blog/thumb/thumb1.png" alt="">
-                                    <ul class="thumb-info">
-                                        <li><a href="#">Adam Colinge</a></li>
-                                        <li><a href="#">Dec 15</a></li>
-                                    </ul>
-                                </div>
-                                <div class="details mt-20">
-                                    <a href="blog-single.html">
-                                        <h6>Accused of assaulting flight attendant miktake alaways</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="single-post-list">
-                                <div class="thumb">
-                                    <img class="card-img rounded-0"
-                                        src="{{ asset('assets') }}/img/blog/thumb/thumb2.png" alt="">
-                                    <ul class="thumb-info">
-                                        <li><a href="#">Adam Colinge</a></li>
-                                        <li><a href="#">Dec 15</a></li>
-                                    </ul>
-                                </div>
-                                <div class="details mt-20">
-                                    <a href="blog-single.html">
-                                        <h6>Tennessee outback steakhouse the
-                                            worker diagnosed</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="single-post-list">
-                                <div class="thumb">
-                                    <img class="card-img rounded-0"
-                                        src="{{ asset('assets') }}/img/blog/thumb/thumb3.png" alt="">
-                                    <ul class="thumb-info">
-                                        <li><a href="#">Adam Colinge</a></li>
-                                        <li><a href="#">Dec 15</a></li>
-                                    </ul>
-                                </div>
-                                <div class="details mt-20">
-                                    <a href="blog-single.html">
-                                        <h6>Tennessee outback steakhouse the
-                                            worker diagnosed</h6>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
+        @endif
+    </div>
+</div>

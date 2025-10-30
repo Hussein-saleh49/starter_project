@@ -1,129 +1,133 @@
-    @extends('theme.master')
-    @section('content')
-    @section('category-active', 'active')
-    @section('web-title', 'Category')
-    @section('hero-size', 'hero-banner hero-banner--sm')
-    @section('blog-title', 'Blog details')
-    @section('page', 'blog-details')
+@extends('theme.master')
+@section('category-active', 'active')
+@section('web-title', 'Category')
+@section('hero-size', 'hero-banner hero-banner--sm')
+@section('blog-title', $blog->name)
+@section('page', $blog->name)
+@section('content')
 
     <!--================ Start Blog Post Area =================-->
     <section class="blog-post-area section-margin">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="main_blog_details">
-                        <img class="img-fluid" src="{{asset("assets")}}/imgblog/blog4.png" alt="">
-                        <a href="#">
-                            <h4>Cartridge Is Better Than Ever <br /> A Discount Toner</h4>
-                        </a>
-                        <div class="user_details">
-                            <div class="float-right mt-sm-0 mt-3">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h5>Mark wiens</h5>
-                                        <p>12 Dec, 2017 11:21 am</p>
-                                    </div>
-                                    <div class="d-flex">
-                                        <img width="42" height="42" src="{{asset("assets")}}/img/avatar.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a fraction of the camp price. However, who has the willpower</p>
-                        <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a fraction of the camp price. However, who has the willpower to actually sit through a
-                            self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                            MCSE training.</p>
-                        <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a fraction of the camp price. However, who has the willpower</p>
-                        <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a fraction of the camp price. However, who has the willpower</p>
-                    </div>
+                <!-- Main Blog Details -->
+                <div class="col-lg-8 mb-4">
+                    @if (session('status'))
+                        <div class="alert alert-success">{{ session('status') }}</div>
+                    @endif
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                        <!-- Blog Image -->
+                        <img src="{{ asset("storage/blogs/$blog->image") }}" alt="{{ $blog->name }}"
+                            class="card-img-top img-fluid" style="object-fit: cover; max-height: 420px;">
 
-                    <div class="comments-area">
-                        <h4>05 Comments</h4>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="{{asset("assets")}}/img/avatar.png" width="50px">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Emilly Blunt</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            Never say goodbye till the end comes!
-                                        </p>
-                                    </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="card-title mb-0">{{ $blog->name }}</h3>
+
+                                @if (Auth::check() && $blog->user_id === Auth::id())
+                                    <a href="{{ route('blogs.edit', $blog->id) }}"
+                                        class="btn btn-warning btn-sm px-3 fw-semibold text-dark">
+                                        <i class="bi bi-pencil-square me-1"></i> Edit
+                                    </a>
+                                    <form action="{{ route('blogs.destroy', $blog) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit"
+                                            class="btn btn-danger btn-sm d-flex align-items-center px-3 fw-semibold shadow-sm">
+                                            <i class="bi bi-trash3 me-1"></i> Delete
+                                        </button>
+                                    </form>
+                                @endif
+                            </div>
+
+                            <div class="d-flex align-items-center text-muted small mb-3">
+                                <img src="{{ asset('assets/img/avatar.png') }}" width="40" height="40"
+                                    class="rounded-circle me-2" alt="">
+                                <div>
+                                    <strong>{{ $blog->user->name }}</strong><br>
+                                    <span>{{ $blog->created_at->format('d M Y') }}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="{{asset("assets")}}/img/avatar.png" width="50px">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Maria Luna</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            Never say goodbye till the end comes!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="{{asset("assets")}}/img/avatar.png" width="50px">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Ina Hayes</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            Never say goodbye till the end comes!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <p class="card-text text-secondary" style="line-height: 1.8;">
+                                {{ $blog->description }}
+                            </p>
                         </div>
                     </div>
 
-                    <div class="comment-form">
-                        <h4>Leave a Reply</h4>
-                        <form>
-                            <div class="form-group form-inline">
-                                <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                    <!-- Comments Section -->
+                    @if (Count($blog->comments) > 0)
+                        
+                    <div class="comments-area mt-5">
+                        <h4 class="mb-4">{{ count($blog->comments) }}</h4>
+                        @foreach ($blog->comments as  $comment)
+                            
+                        <div class="single-comment d-flex mb-4 p-3 border rounded-3">
+                            <img src="{{ asset('assets/img/avatar.png') }}" class="rounded-circle me-3" width="50"
+                            height="50" alt="">
+                            <div>
+                                <h6 class="mb-1">{{ $comment->name}}</h6>
+                                <p class="text-muted small mb-1">{{ $comment->created_at->format(" d M Y") }}</p>
+                                <p class="mb-0">{{ $comment->message }}</p>
+                            </div>
+                        </div>
+                        
+                        @endforeach
+                        
+                    </div>
+                    @endif
+
+                    <!-- Comment Form -->
+                    <div class="comment-form mt-5">
+                        @if (session('status'))
+                            <div class=" alert alert-success">{{ session('status') }}</div>
+                        @endif
+                        <h4 class="mb-3">Leave a Reply</h4>
+                        <form action="{{ route('comments.store') }}" method="POST">
+                            @csrf
+                            <div class="row g-3">
+                                <input type="hidden" name="blog_id" value={{ $blog->id }}>
+                                <input type="hidden" name="form" value="comment">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}"
+                                        placeholder="Enter Name">
+                                    @error('name','comment')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                    @enderror
                                 </div>
-                                <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="Enter email address" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email address'">
+                                <div class="col-md-6">
+                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}"
+                                        placeholder="Enter Email">
+                                    @error('email', 'comment')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" name="subject" value="{{ old('subject') }}" class="form-control"
+                                        placeholder="Subject">
+                                    @error('subject', 'comment')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" aria-valuemax="{{ old('message') }}" name="message" rows="5"
+                                        placeholder="Message"></textarea>
+                                    @error('message', 'comment')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary px-4 py-2 mt-2">Post Comment</button>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Messege'" required=""></textarea>
-                            </div>
-                            <a href="#" class="button submit_btn">Post Comment</a>
                         </form>
                     </div>
                 </div>
+
+                <!-- Sidebar -->
                 @include('theme.parials.sidebar')
+            </div>
+        </div>
     </section>
 @endsection
 <!--================ End Blog Post Area =================-->

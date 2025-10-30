@@ -1,219 +1,61 @@
- @extends('theme.master')
- @section('content')
- @section('category-active', 'active')
- @section('web-title', 'Category')
- @section('hero-size', 'hero-banner hero-banner--sm')
- @section('blog-title', 'Category')
- @section('page', 'Category ')
- <!--================ Start Blog Post Area =================-->
- <section class="blog-post-area section-margin">
-     <div class="container">
-         <div class="row">
-             <div class="col-lg-8">
-                 <div class="row">
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card1.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Fast cars and rickety bridges as
-                                         he grand tour returns</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card2.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Harvey Weinstein's senual assault
-                                         trial set for May</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card3.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Fast cars and rickety bridges as
-                                         he grand tour returns</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card4.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Harvey Weinstein's senual assault
-                                         trial set for May</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card5.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Fast cars and rickety bridges as
-                                         he grand tour returns</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card6.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Harvey Weinstein's senual assault
-                                         trial set for May</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card7.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Fast cars and rickety bridges as
-                                         he grand tour returns</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="single-recent-blog-post card-view">
-                             <div class="thumb">
-                                 <img class="card-img rounded-0"
-                                     src="{{ asset('assets') }}/img/blog/thumb/thumb-card8.png" alt="">
-                                 <ul class="thumb-info">
-                                     <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                     <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                 </ul>
-                             </div>
-                             <div class="details mt-20">
-                                 <a href="blog-single.html">
-                                     <h3>Harvey Weinstein's senual assault
-                                         trial set for May</h3>
-                                 </a>
-                                 <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent velit
-                                     felis lone commodo pellentesque</p>
-                                 <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
+@extends('theme.master')
 
+@section('category-active', 'active')
+@section('web-title', 'Category')
+@section('hero-size', 'hero-banner hero-banner--sm')
+@section('blog-title', $category_name )
+@section('page',  $category_name)
 
+@section('content')
+<!--================ Start Blog Post Area =================-->
+<section class="blog-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <!-- Start Left Blog Posts -->
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="row">
+                    @if ($blogs->count() > 0)
+                        @foreach ($blogs as $blog)
+                            <div class="col-md-6 mb-4">
+                                <div class="single-recent-blog-post card-view">
+                                    <div class="thumb">
+                                        <img class="card-img rounded-0"
+                                             src="{{ asset("storage/blogs/$blog->image") }}"
+                                             alt="{{ $blog->name }}"
+                                             style="width:100%; height:250px; object-fit:cover;">
+                                        <ul class="thumb-info">
+                                            <li><a href="#"><i class="ti-user"></i>{{ $blog->user->name }}</a></li>
+                                            <li><a href="#"><i class="ti-themify-favicon"></i>#</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="details mt-20">
+                                        <a href="{{ route("blogs.show",$blog->id) }}">
+                                            <h3>{{ $blog->name }}</h3>
+                                        </a>
+                                        <p>{{ Str::limit($blog->description, 120) }}</p>
+                                        <a class="button" href="{{ route("blogs.show",$blog) }}">Read More <i class="ti-arrow-right"></i></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-center w-100">No blogs found in this category.</p>
+                    @endif
+                </div>
 
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $blogs->links() }}
+                    </div>
+                </div>
+            </div>
+            <!-- End Left Blog Posts -->
 
-                 <div class="row">
-                     <div class="col-lg-12">
-                         <nav class="blog-pagination justify-content-center d-flex">
-                             <ul class="pagination">
-                                 <li class="page-item">
-                                     <a href="#" class="page-link" aria-label="Previous">
-                                         <span aria-hidden="true">
-                                             <i class="ti-angle-left"></i>
-                                         </span>
-                                     </a>
-                                 </li>
-                                 <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                                 <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                 <li class="page-item">
-                                     <a href="#" class="page-link" aria-label="Next">
-                                         <span aria-hidden="true">
-                                             <i class="ti-angle-right"></i>
-                                         </span>
-                                     </a>
-                                 </li>
-                             </ul>
-                         </nav>
-                     </div>
-                 </div>
-             </div>
-
-             <!-- Start Blog Post Siddebar -->
-             @include('theme.parials.sidebar')
-             <!-- End Blog Post Siddebar -->
-         </div>
- </section>
-@endsection
+            <!-- Sidebar (don’t wrap it again in col-lg-4, it’s already inside) -->
+            @include('theme.parials.sidebar')
+        </div>
+    </div>
+</section>
 <!--================ End Blog Post Area =================-->
+@endsection
